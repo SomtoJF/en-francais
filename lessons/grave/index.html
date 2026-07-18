@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>French Accent Grave Practice</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-8 px-4 shadow-md text-center">
+    <a href="../../index.html" class="text-indigo-200 hover:text-white text-sm font-medium">← All lessons</a>
+    <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">L'Accent Grave ↘ è à ù</h1>
+    <p class="text-indigo-100 mt-2 max-w-xl mx-auto">The falling accent: it changes the sound on e, but on a and u it's a silent guardian of meaning.</p>
+  </header>
+
+  <main class="flex-grow max-w-4xl w-full mx-auto p-4 md:p-8 space-y-8">
+
+    <!-- The rules -->
+    <section class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 space-y-4">
+      <div class="border-l-4 border-indigo-500 pl-4">
+        <h2 class="text-xl font-bold text-slate-900">Two Jobs, One Accent</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="bg-indigo-50 p-4 rounded-lg space-y-2">
+          <p class="text-xs font-bold uppercase text-indigo-800 tracking-wider">On e — it changes the sound</p>
+          <p class="text-sm text-indigo-950">è produces the open <span class="font-mono bg-indigo-100 px-1 rounded">[ɛ]</span> <strong>"air"</strong> sound: <em>mère, père, très, près</em>. Compare with é ("ay") — the direction of the tilt tells you the sound.</p>
+        </div>
+        <div class="bg-purple-50 p-4 rounded-lg space-y-2">
+          <p class="text-xs font-bold uppercase text-purple-800 tracking-wider">On a and u — it changes the meaning</p>
+          <p class="text-sm text-purple-950">à and ù sound <strong>exactly the same</strong> as unaccented a and u. The accent exists only to distinguish words with identical spellings but different meanings: <em>a</em> (has) vs <em>à</em> (to), <em>ou</em> (or) vs <em>où</em> (where), <em>la</em> (the) vs <em>là</em> (there).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation Tabs -->
+    <div class="flex border-b border-slate-200 bg-white rounded-t-xl overflow-hidden shadow-sm">
+      <button onclick="switchTab('homograph')" id="tab-homograph" class="flex-1 py-4 text-center font-semibold text-sm md:text-base border-b-2 border-indigo-600 text-indigo-600 transition">
+        ⚖️ Same Sound, Different Word
+      </button>
+      <button onclick="switchTab('direction')" id="tab-direction" class="flex-1 py-4 text-center font-semibold text-sm md:text-base border-b-2 border-transparent text-slate-500 hover:text-slate-800 transition">
+        ↘↗ è or é?
+      </button>
+    </div>
+
+    <!-- TAB 1: Homograph quiz -->
+    <section id="section-homograph" class="bg-white p-6 rounded-b-xl shadow-sm border border-t-0 border-slate-200 space-y-6">
+      <div class="flex items-start justify-between gap-4">
+        <div class="border-l-4 border-purple-500 pl-4">
+          <h2 class="text-xl font-bold text-slate-900">Same Sound, Different Word</h2>
+          <p class="text-slate-600 text-sm mt-1">
+            a/à, ou/où, la/là — the sound won't help you here. Pick the spelling whose meaning fits the sentence.
+          </p>
+        </div>
+        <button onclick="newHomographRound()" class="shrink-0 bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded text-sm font-medium transition">🔄 New Round</button>
+      </div>
+
+      <p id="progress-homograph" class="text-xs text-slate-500 bg-slate-50 border border-slate-200 rounded px-3 py-2"></p>
+      <p id="round-done-homograph" class="text-sm font-semibold text-purple-700 bg-purple-50 border border-purple-200 rounded px-3 py-2 hidden"></p>
+
+      <div id="homograph-questions" class="space-y-6"></div>
+    </section>
+
+    <!-- TAB 2: Direction quiz -->
+    <section id="section-direction" class="bg-white p-6 rounded-b-xl shadow-sm border border-t-0 border-slate-200 space-y-6 hidden">
+      <div class="flex items-start justify-between gap-4">
+        <div class="border-l-4 border-emerald-500 pl-4">
+          <h2 class="text-xl font-bold text-slate-900">è or é? Which Way Does the Hat Tilt?</h2>
+          <p class="text-slate-600 text-sm mt-1">
+            The classic mix-up: grave (è ↘, "air") vs aigu (é ↗, "ay"). Listen to the word, feel the sound, and pick the right accent.
+          </p>
+        </div>
+        <button onclick="newDirectionRound()" class="shrink-0 bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded text-sm font-medium transition">🔄 New Round</button>
+      </div>
+
+      <p id="progress-direction" class="text-xs text-slate-500 bg-slate-50 border border-slate-200 rounded px-3 py-2"></p>
+      <p id="round-done-direction" class="text-sm font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 rounded px-3 py-2 hidden"></p>
+
+      <div id="direction-questions" class="space-y-6"></div>
+    </section>
+
+  </main>
+
+  <footer class="bg-slate-800 text-slate-400 text-center py-4 text-xs mt-auto space-x-2">
+    <span>Pratique de l'accent grave &bull; French Basics Learning Suite</span>
+    <button onclick="resetProgress()" class="underline hover:text-slate-200">Reset progress</button>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

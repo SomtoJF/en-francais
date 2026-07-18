@@ -35,18 +35,7 @@
     <!-- Lessons -->
     <section class="space-y-4">
       <h2 class="text-xl font-bold text-slate-900">Lessons</h2>
-      <div class="grid gap-4 md:grid-cols-2">
-        <a href="lessons/circonflexe/index.html" class="block p-5 bg-white border border-slate-200 rounded-xl shadow-sm hover:shadow-md hover:border-indigo-400 transition space-y-2">
-          <div class="flex justify-between items-center">
-            <span class="text-2xl font-bold text-indigo-600">Accent Circonflexe 🎩</span>
-            <span class="text-xs font-mono bg-indigo-100 text-indigo-800 px-2 py-1 rounded">ê â ô û î</span>
-          </div>
-          <p class="text-sm text-slate-600">
-            Master the circumflex through word history (the ghost "S"), meaning-saving word pairs like <em>sur/sûr</em>, and mouth mechanics for the ê and ô sounds.
-          </p>
-          <p class="text-xs font-medium text-indigo-600">Start practicing →</p>
-        </a>
-      </div>
+      <div id="lesson-grid" class="grid gap-4 md:grid-cols-2"></div>
     </section>
 
   </main>
@@ -55,5 +44,52 @@
     French Basics Learning Suite &bull; Un pas à la fois
   </footer>
 
+  <script>
+    const LESSONS = [
+      {
+        title: 'The French Alphabet 🔤',
+        characters: 'a bé cé',
+        href: 'lessons/alphabet/index.html',
+        description: 'All 26 letters with their French name spellings, IPA pronunciations, English sound hints, and audio to listen letter by letter.',
+      },
+      {
+        title: 'Accent Aigu ↗',
+        characters: 'é',
+        href: 'lessons/aigu/index.html',
+        description: 'The rising accent that only ever appears on "e" and makes the crisp "ay" sound — plus drills to stop mixing é and è up.',
+      },
+      {
+        title: 'Accent Grave ↘',
+        characters: 'è à ù',
+        href: 'lessons/grave/index.html',
+        description: 'The falling accent: "air" sound on è, silent meaning-saver on à and ù (a/à, ou/où, la/là) — with quizzes for both jobs.',
+      },
+      {
+        title: 'Accent Circonflexe 🎩',
+        characters: 'ê â ô û î',
+        href: 'lessons/circonflexe/index.html',
+        description: 'Master the circumflex through word history (the ghost "S"), meaning-saving word pairs like <em>sur/sûr</em>, and mouth mechanics for the ê and ô sounds.',
+      },
+    ];
+
+    function renderLessons() {
+      const grid = document.getElementById('lesson-grid');
+      LESSONS.forEach((lesson) => {
+        const card = document.createElement('a');
+        card.href = lesson.href;
+        card.className = 'block p-5 bg-white border border-slate-200 rounded-xl shadow-sm hover:shadow-md hover:border-indigo-400 transition space-y-2';
+        card.innerHTML = `
+          <div class="flex justify-between items-center">
+            <span class="text-2xl font-bold text-indigo-600">${lesson.title}</span>
+            <span class="text-xs font-mono bg-indigo-100 text-indigo-800 px-2 py-1 rounded">${lesson.characters}</span>
+          </div>
+          <p class="text-sm text-slate-600">${lesson.description}</p>
+          <p class="text-xs font-medium text-indigo-600">Start practicing →</p>`;
+        grid.appendChild(card);
+      });
+    }
+
+    renderLessons();
+  </script>
 </body>
 </html>
