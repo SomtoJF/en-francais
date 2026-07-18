@@ -197,31 +197,65 @@ function switchTab(tabId) {
   activeTab.classList.remove('border-transparent', 'text-slate-500');
 }
 
+const SOUNDS = {
+  'ê': {
+    demo: 'fête, crêpe',
+    emoji: '😮',
+    mouthClass: 'w-24 h-24 rounded-[40%_40%_15%_15%] border-4 border-purple-500 bg-purple-50 transition-all duration-500 flex items-center justify-center text-4xl shadow-inner',
+    desc: 'Jaw Dropped / Open Vowel [ɛ]',
+    descClass: 'text-purple-600 font-bold',
+  },
+  'ô': {
+    demo: 'côte, hôte',
+    emoji: '😗',
+    mouthClass: 'w-16 h-16 rounded-full border-4 border-indigo-500 bg-indigo-50 transition-all duration-500 flex items-center justify-center text-4xl shadow-inner',
+    desc: 'Rounded Lips / Closed Vowel [o]',
+    descClass: 'text-indigo-600 font-bold',
+  },
+  'â': {
+    demo: 'pâte, château',
+    emoji: '😲',
+    mouthClass: 'w-28 h-28 rounded-full border-4 border-rose-500 bg-rose-50 transition-all duration-500 flex items-center justify-center text-4xl shadow-inner',
+    desc: 'Jaw Wide Open / Deep Back Vowel [ɑ]',
+    descClass: 'text-rose-600 font-bold',
+  },
+  'î': {
+    demo: 'île, dîner',
+    emoji: '😁',
+    mouthClass: 'w-28 h-14 rounded-full border-4 border-emerald-500 bg-emerald-50 transition-all duration-500 flex items-center justify-center text-4xl shadow-inner',
+    desc: 'Lips Spread in a Smile / Front Vowel [i]',
+    descClass: 'text-emerald-600 font-bold',
+  },
+  'û': {
+    demo: 'sûr, flûte',
+    emoji: '😙',
+    mouthClass: 'w-14 h-14 rounded-full border-4 border-amber-500 bg-amber-50 transition-all duration-500 flex items-center justify-center text-4xl shadow-inner',
+    desc: 'Whistle Lips, Tongue Forward / Rounded Front Vowel [y]',
+    descClass: 'text-amber-600 font-bold',
+  },
+};
+
 function playDemo(sound) {
+  const text = SOUNDS[sound].demo;
   if ('speechSynthesis' in window) {
-    const text = sound === 'ê' ? 'fête, crêpe' : 'côte, hôte';
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = 'fr-FR';
     window.speechSynthesis.speak(utterance);
   } else {
-    alert(`Read this out loud: ${sound === 'ê' ? '"fête", "crêpe"' : '"côte", "hôte"'}`);
+    alert(`Read this out loud: ${text}`);
   }
 }
 
 function simulateMouth(mode) {
   const mouth = document.getElementById('mouth-shape');
   const desc = document.getElementById('mouth-desc');
+  const sound = SOUNDS[mode];
 
-  if (mode === 'ê') {
-    mouth.innerText = '😮';
-    mouth.className = 'w-24 h-24 rounded-[40%_40%_15%_15%] border-4 border-purple-500 bg-purple-50 transition-all duration-500 flex items-center justify-center text-4xl shadow-inner';
-    desc.innerText = 'Jaw Dropped / Open Vowel [ɛ]';
-    desc.className = 'text-purple-600 font-bold';
-  } else if (mode === 'ô') {
-    mouth.innerText = '😗';
-    mouth.className = 'w-16 h-16 rounded-full border-4 border-indigo-500 bg-indigo-50 transition-all duration-500 flex items-center justify-center text-4xl shadow-inner';
-    desc.innerText = 'Rounded Lips / Closed Vowel [o]';
-    desc.className = 'text-indigo-600 font-bold';
+  if (sound) {
+    mouth.innerText = sound.emoji;
+    mouth.className = sound.mouthClass;
+    desc.innerText = sound.desc;
+    desc.className = sound.descClass;
   } else {
     mouth.innerText = '😐';
     mouth.className = 'w-24 h-24 rounded-full border-4 border-slate-400 bg-white transition-all duration-500 flex items-center justify-center text-4xl';

@@ -127,6 +127,75 @@
             </button>
           </div>
         </div>
+
+        <!-- Sound 3: â -->
+        <div class="p-5 border border-slate-200 rounded-xl space-y-4">
+          <div class="flex justify-between items-center">
+            <h3 class="text-3xl font-extrabold text-rose-600">â <span class="text-base font-normal text-slate-500">as in "pâte"</span></h3>
+            <span class="px-2 py-1 bg-rose-100 text-rose-800 text-xs font-mono font-bold rounded">Deep Sound [ɑ]</span>
+          </div>
+
+          <div class="bg-rose-50 p-4 rounded-lg space-y-2">
+            <p class="text-xs font-bold uppercase text-rose-800 tracking-wider">Mouth Action Plan:</p>
+            <ul class="text-sm text-rose-950 space-y-1 list-disc list-inside">
+              <li>Drop your jaw wide open.</li>
+              <li>Pull your tongue low and toward the back.</li>
+              <li>Darker and deeper than regular "a" — like the doctor's <strong class="underline">aah</strong>.</li>
+            </ul>
+          </div>
+
+          <div class="pt-2">
+            <button onclick="playDemo('â')" class="w-full bg-rose-600 hover:bg-rose-700 text-white py-2 px-4 rounded text-sm font-semibold transition flex items-center justify-center gap-2">
+              🔊 Read "pâte, château" Out Loud
+            </button>
+          </div>
+        </div>
+
+        <!-- Sound 4: î -->
+        <div class="p-5 border border-slate-200 rounded-xl space-y-4">
+          <div class="flex justify-between items-center">
+            <h3 class="text-3xl font-extrabold text-emerald-600">î <span class="text-base font-normal text-slate-500">as in "île"</span></h3>
+            <span class="px-2 py-1 bg-emerald-100 text-emerald-800 text-xs font-mono font-bold rounded">Smile Sound [i]</span>
+          </div>
+
+          <div class="bg-emerald-50 p-4 rounded-lg space-y-2">
+            <p class="text-xs font-bold uppercase text-emerald-800 tracking-wider">Mouth Action Plan:</p>
+            <ul class="text-sm text-emerald-950 space-y-1 list-disc list-inside">
+              <li>Spread your lips into a tight smile.</li>
+              <li>Push your tongue high and forward.</li>
+              <li>Sounds exactly like plain "i" — like the vowel in <strong class="underline">see</strong>, but short and crisp.</li>
+            </ul>
+          </div>
+
+          <div class="pt-2">
+            <button onclick="playDemo('î')" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-2 px-4 rounded text-sm font-semibold transition flex items-center justify-center gap-2">
+              🔊 Read "île, dîner" Out Loud
+            </button>
+          </div>
+        </div>
+
+        <!-- Sound 5: û -->
+        <div class="p-5 border border-slate-200 rounded-xl space-y-4">
+          <div class="flex justify-between items-center">
+            <h3 class="text-3xl font-extrabold text-amber-600">û <span class="text-base font-normal text-slate-500">as in "sûr"</span></h3>
+            <span class="px-2 py-1 bg-amber-100 text-amber-800 text-xs font-mono font-bold rounded">Whistle Sound [y]</span>
+          </div>
+
+          <div class="bg-amber-50 p-4 rounded-lg space-y-2">
+            <p class="text-xs font-bold uppercase text-amber-800 tracking-wider">Mouth Action Plan:</p>
+            <ul class="text-sm text-amber-950 space-y-1 list-disc list-inside">
+              <li>Say "ee" as in <strong class="underline">see</strong>… then round your lips like a whistle without moving your tongue.</li>
+              <li>Tongue stays high and forward; only the lips change.</li>
+              <li>No English equivalent — it is NOT "oo"!</li>
+            </ul>
+          </div>
+
+          <div class="pt-2">
+            <button onclick="playDemo('û')" class="w-full bg-amber-600 hover:bg-amber-700 text-white py-2 px-4 rounded text-sm font-semibold transition flex items-center justify-center gap-2">
+              🔊 Read "sûr, flûte" Out Loud
+            </button>
+          </div>
+        </div>
       </div>
 
       <!-- Real-time mouth position visualizer simulator -->
@@ -141,9 +210,12 @@
             <p class="text-xs text-slate-500 max-w-sm">Observe how the shape changes from a relaxed drop (ê) to a tight round circle (ô).</p>
           </div>
         </div>
-        <div class="flex justify-center gap-2">
+        <div class="flex flex-wrap justify-center gap-2">
           <button onclick="simulateMouth('ê')" class="bg-slate-200 hover:bg-purple-100 hover:text-purple-700 px-4 py-2 rounded text-sm font-medium transition">Model [ê] Shape</button>
           <button onclick="simulateMouth('ô')" class="bg-slate-200 hover:bg-indigo-100 hover:text-indigo-700 px-4 py-2 rounded text-sm font-medium transition">Model [ô] Shape</button>
+          <button onclick="simulateMouth('â')" class="bg-slate-200 hover:bg-rose-100 hover:text-rose-700 px-4 py-2 rounded text-sm font-medium transition">Model [â] Shape</button>
+          <button onclick="simulateMouth('î')" class="bg-slate-200 hover:bg-emerald-100 hover:text-emerald-700 px-4 py-2 rounded text-sm font-medium transition">Model [î] Shape</button>
+          <button onclick="simulateMouth('û')" class="bg-slate-200 hover:bg-amber-100 hover:text-amber-700 px-4 py-2 rounded text-sm font-medium transition">Model [û] Shape</button>
           <button onclick="simulateMouth('reset')" class="bg-slate-200 hover:bg-slate-300 px-4 py-2 rounded text-sm font-medium transition">Reset</button>
         </div>
       </div>
