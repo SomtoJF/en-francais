@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>French Basics Learning Suite</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-8 px-4 shadow-md text-center">
+    <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">French Basics Learning Suite 🇫🇷</h1>
+    <p class="text-indigo-100 mt-2 max-w-xl mx-auto">A personal guide of hands-on lessons <a href="https://github.com/somtojf" target="_blank" rel="noopener" class="underline font-semibold text-white hover:text-indigo-200">I built</a> to practice as I learn French — one tricky concept at a time.</p>
+  </header>
+
+  <main class="flex-grow max-w-4xl w-full mx-auto p-4 md:p-8 space-y-8">
+
+    <!-- Purpose -->
+    <section class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+      <div class="border-l-4 border-indigo-500 pl-4">
+        <h2 class="text-xl font-bold text-slate-900">Why this exists</h2>
+        <p class="text-slate-600 text-sm mt-1">
+          This project is my practice guide while learning French. Each lesson turns a concept I'm working on into interactive exercises, so I can drill it until it sticks — and track my progress along the way.
+        </p>
+      </div>
+    </section>
+
+    <!-- Lessons -->
+    <section class="space-y-4">
+      <h2 class="text-xl font-bold text-slate-900">Lessons</h2>
+      <div class="grid gap-4 md:grid-cols-2">
+        <a href="lessons/circonflexe/index.html" class="block p-5 bg-white border border-slate-200 rounded-xl shadow-sm hover:shadow-md hover:border-indigo-400 transition space-y-2">
+          <div class="flex justify-between items-center">
+            <span class="text-2xl font-bold text-indigo-600">Accent Circonflexe 🎩</span>
+            <span class="text-xs font-mono bg-indigo-100 text-indigo-800 px-2 py-1 rounded">ê â ô û î</span>
+          </div>
+          <p class="text-sm text-slate-600">
+            Master the circumflex through word history (the ghost "S"), meaning-saving word pairs like <em>sur/sûr</em>, and mouth mechanics for the ê and ô sounds.
+          </p>
+          <p class="text-xs font-medium text-indigo-600">Start practicing →</p>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="bg-slate-800 text-slate-400 text-center py-4 text-xs mt-auto">
+    French Basics Learning Suite &bull; Un pas à la fois
+  </footer>
+
+</body>
+</html>
