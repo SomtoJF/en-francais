@@ -158,9 +158,14 @@ function newMeaningRound() {
 
 function checkMeaning(i, j) {
   const state = roundState.meaning;
-  const opt = state.items[i].options[j];
+  const q = state.items[i];
+  const opt = q.options[j];
   const feedback = document.getElementById(`meaning-feedback-${i}`);
   feedback.classList.remove('hidden');
+
+  const filledFr = q.sentence.replace('______', opt.word);
+  const filledEn = q.translation.replace('______', `"${opt.gloss}"`);
+  const reading = `\n« ${filledFr} » → ${filledEn}`;
 
   const firstTry = !(i in state.answered);
   if (opt.correct) {
@@ -168,12 +173,12 @@ function checkMeaning(i, j) {
       state.answered[i] = true;
       state.correct += 1;
     }
-    feedback.innerText = `✅ Correct! "${opt.word}" matches the context perfectly.`;
-    feedback.className = 'text-sm font-medium text-emerald-600 mt-2';
+    feedback.innerText = `✅ Correct! "${opt.word}" matches the context perfectly.${reading}`;
+    feedback.className = 'text-sm font-medium text-emerald-600 mt-2 whitespace-pre-line';
   } else {
     if (firstTry) state.answered[i] = false;
-    feedback.innerText = '❌ Oops! Think about whether the word needs the semantic "hat" or not.';
-    feedback.className = 'text-sm font-medium text-red-600 mt-2';
+    feedback.innerText = `❌ Oops! Hear how that reads:${reading}\nThink about whether the word needs the semantic "hat" or not.`;
+    feedback.className = 'text-sm font-medium text-red-600 mt-2 whitespace-pre-line';
   }
   maybeFinishRound('meaning');
 }
