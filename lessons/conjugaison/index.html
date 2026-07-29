@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>French Verb Conjugation Practice</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-8 px-4 shadow-md text-center">
+    <a href="../../index.html" class="text-indigo-200 hover:text-white text-sm font-medium">← All lessons</a>
+    <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">Conjugaison — ER · IR · RE 🔧</h1>
+    <p class="text-indigo-100 mt-2 max-w-xl mx-auto">Present-tense conjugation of the three verb families — plus the irregular IR verbs (dormir, partir, venir…) that break the mold.</p>
+  </header>
+
+  <main class="flex-grow max-w-4xl w-full mx-auto p-4 md:p-8 space-y-8">
+
+    <!-- The rules -->
+    <section class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 space-y-4">
+      <div class="border-l-4 border-indigo-500 pl-4">
+        <h2 class="text-xl font-bold text-slate-900">The Recipe: Stem + Ending</h2>
+        <p class="text-slate-600 text-sm mt-1">Chop the infinitive ending (-er, -ir, -re) off to get the <strong>stem</strong>, then add the ending that matches the subject. Regular IR verbs sneak an extra <span class="font-mono bg-slate-100 px-1 rounded">-iss-</span> into the plural.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-4 text-sm">
+        <div class="bg-indigo-50 p-4 rounded-lg">
+          <p class="text-xs font-bold uppercase text-indigo-800 tracking-wider mb-2">-ER · parler (to speak)</p>
+          <table class="w-full font-mono text-indigo-950">
+            <tr><td>je</td><td>parl<strong>e</strong></td></tr>
+            <tr><td>tu</td><td>parl<strong>es</strong></td></tr>
+            <tr><td>il/elle</td><td>parl<strong>e</strong></td></tr>
+            <tr><td>nous</td><td>parl<strong>ons</strong></td></tr>
+            <tr><td>vous</td><td>parl<strong>ez</strong></td></tr>
+            <tr><td>ils/elles</td><td>parl<strong>ent</strong></td></tr>
+          </table>
+          <button onclick="speakTable('parler')" class="mt-3 text-xs bg-indigo-100 hover:bg-indigo-200 text-indigo-800 px-3 py-1.5 rounded font-medium transition">🔊 Hear it</button>
+        </div>
+        <div class="bg-purple-50 p-4 rounded-lg">
+          <p class="text-xs font-bold uppercase text-purple-800 tracking-wider mb-2">-IR · finir (to finish)</p>
+          <table class="w-full font-mono text-purple-950">
+            <tr><td>je</td><td>fin<strong>is</strong></td></tr>
+            <tr><td>tu</td><td>fin<strong>is</strong></td></tr>
+            <tr><td>il/elle</td><td>fin<strong>it</strong></td></tr>
+            <tr><td>nous</td><td>fin<strong>issons</strong></td></tr>
+            <tr><td>vous</td><td>fin<strong>issez</strong></td></tr>
+            <tr><td>ils/elles</td><td>fin<strong>issent</strong></td></tr>
+          </table>
+          <button onclick="speakTable('finir')" class="mt-3 text-xs bg-purple-100 hover:bg-purple-200 text-purple-800 px-3 py-1.5 rounded font-medium transition">🔊 Hear it</button>
+        </div>
+        <div class="bg-emerald-50 p-4 rounded-lg">
+          <p class="text-xs font-bold uppercase text-emerald-800 tracking-wider mb-2">-RE · vendre (to sell)</p>
+          <table class="w-full font-mono text-emerald-950">
+            <tr><td>je</td><td>vend<strong>s</strong></td></tr>
+            <tr><td>tu</td><td>vend<strong>s</strong></td></tr>
+            <tr><td>il/elle</td><td>vend<strong>&nbsp;</strong><span class="text-xs text-emerald-600">(nothing!)</span></td></tr>
+            <tr><td>nous</td><td>vend<strong>ons</strong></td></tr>
+            <tr><td>vous</td><td>vend<strong>ez</strong></td></tr>
+            <tr><td>ils/elles</td><td>vend<strong>ent</strong></td></tr>
+          </table>
+          <button onclick="speakTable('vendre')" class="mt-3 text-xs bg-emerald-100 hover:bg-emerald-200 text-emerald-800 px-3 py-1.5 rounded font-medium transition">🔊 Hear it</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Irregular IR reference -->
+    <section class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 space-y-4">
+      <div class="border-l-4 border-rose-500 pl-4">
+        <h2 class="text-xl font-bold text-slate-900">The Rebels: Irregular IR Verbs</h2>
+        <p class="text-slate-600 text-sm mt-1">Not every -ir verb follows the finir pattern (no <span class="font-mono bg-slate-100 px-1 rounded">-iss-</span> here). Three gangs to know:</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-4 text-sm">
+        <div class="bg-rose-50 p-4 rounded-lg space-y-2">
+          <p class="text-xs font-bold uppercase text-rose-800 tracking-wider">The dormir gang</p>
+          <p class="text-rose-950"><em>dormir, partir, sortir, servir, sentir, mentir</em> — the singular <strong>drops the stem's last consonant</strong>, the plural keeps it:</p>
+          <p class="font-mono text-rose-950">je dor<strong>s</strong>, tu dor<strong>s</strong>, il dor<strong>t</strong><br>nous dorm<strong>ons</strong>, vous dorm<strong>ez</strong>, ils dorm<strong>ent</strong></p>
+          <button onclick="speakTable('dormir')" class="text-xs bg-rose-100 hover:bg-rose-200 text-rose-800 px-3 py-1.5 rounded font-medium transition">🔊 Hear it</button>
+        </div>
+        <div class="bg-amber-50 p-4 rounded-lg space-y-2">
+          <p class="text-xs font-bold uppercase text-amber-800 tracking-wider">The venir gang</p>
+          <p class="text-amber-950"><em>venir, tenir</em> (+ devenir, revenir…) — the stem morphs to <strong>-ien-</strong> everywhere except nous/vous:</p>
+          <p class="font-mono text-amber-950">je vien<strong>s</strong>, tu vien<strong>s</strong>, il vien<strong>t</strong><br>nous ven<strong>ons</strong>, vous ven<strong>ez</strong>, ils v<strong>iennent</strong></p>
+          <button onclick="speakTable('venir')" class="text-xs bg-amber-100 hover:bg-amber-200 text-amber-800 px-3 py-1.5 rounded font-medium transition">🔊 Hear it</button>
+        </div>
+        <div class="bg-sky-50 p-4 rounded-lg space-y-2">
+          <p class="text-xs font-bold uppercase text-sky-800 tracking-wider">The ouvrir gang</p>
+          <p class="text-sky-950"><em>ouvrir, offrir, couvrir, souffrir</em> — IR costume, ER heart: they take <strong>regular -ER endings</strong>:</p>
+          <p class="font-mono text-sky-950">j'ouvr<strong>e</strong>, tu ouvr<strong>es</strong>, il ouvr<strong>e</strong><br>nous ouvr<strong>ons</strong>, vous ouvr<strong>ez</strong>, ils ouvr<strong>ent</strong></p>
+          <button onclick="speakTable('ouvrir')" class="text-xs bg-sky-100 hover:bg-sky-200 text-sky-800 px-3 py-1.5 rounded font-medium transition">🔊 Hear it</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation Tabs -->
+    <div class="flex border-b border-slate-200 bg-white rounded-t-xl overflow-hidden shadow-sm">
+      <button onclick="switchTab('mc')" id="tab-mc" class="flex-1 py-4 text-center font-semibold text-sm md:text-base border-b-2 border-indigo-600 text-indigo-600 transition">
+        🎯 Pick the Form
+      </button>
+      <button onclick="switchTab('type')" id="tab-type" class="flex-1 py-4 text-center font-semibold text-sm md:text-base border-b-2 border-transparent text-slate-500 hover:text-slate-800 transition">
+        ⌨️ Type the Form
+      </button>
+      <button onclick="switchTab('irregular')" id="tab-irregular" class="flex-1 py-4 text-center font-semibold text-sm md:text-base border-b-2 border-transparent text-slate-500 hover:text-slate-800 transition">
+        🏴 Irregular IR
+      </button>
+    </div>
+
+    <!-- TAB 1: Multiple choice -->
+    <section id="section-mc" class="bg-white p-6 rounded-b-xl shadow-sm border border-t-0 border-slate-200 space-y-6">
+      <div class="flex items-start justify-between gap-4">
+        <div class="border-l-4 border-indigo-500 pl-4">
+          <h2 class="text-xl font-bold text-slate-900">Pick the Form</h2>
+          <p class="text-slate-600 text-sm mt-1">
+            Regular ER, IR and RE verbs mixed together. Match the ending to the subject — watch out for the sneaky -iss- on plural IR forms.
+          </p>
+        </div>
+        <button onclick="newMcRound()" class="shrink-0 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded text-sm font-medium transition">🔄 New Round</button>
+      </div>
+
+      <p id="progress-mc" class="text-xs text-slate-500 bg-slate-50 border border-slate-200 rounded px-3 py-2"></p>
+      <p id="round-done-mc" class="text-sm font-semibold text-indigo-700 bg-indigo-50 border border-indigo-200 rounded px-3 py-2 hidden"></p>
+
+      <div id="mc-questions" class="space-y-6"></div>
+    </section>
+
+    <!-- TAB 2: Type the form -->
+    <section id="section-type" class="bg-white p-6 rounded-b-xl shadow-sm border border-t-0 border-slate-200 space-y-6 hidden">
+      <div class="flex items-start justify-between gap-4">
+        <div class="border-l-4 border-purple-500 pl-4">
+          <h2 class="text-xl font-bold text-slate-900">Type the Form</h2>
+          <p class="text-slate-600 text-sm mt-1">
+            No hints this time — build the form yourself: chop the infinitive ending, add the right one for the subject.
+          </p>
+        </div>
+        <button onclick="newTypeRound()" class="shrink-0 bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded text-sm font-medium transition">🔄 New Round</button>
+      </div>
+
+      <p id="progress-type" class="text-xs text-slate-500 bg-slate-50 border border-slate-200 rounded px-3 py-2"></p>
+      <p id="round-done-type" class="text-sm font-semibold text-purple-700 bg-purple-50 border border-purple-200 rounded px-3 py-2 hidden"></p>
+
+      <div id="type-questions" class="space-y-6"></div>
+    </section>
+
+    <!-- TAB 3: Irregular IR -->
+    <section id="section-irregular" class="bg-white p-6 rounded-b-xl shadow-sm border border-t-0 border-slate-200 space-y-6 hidden">
+      <div class="flex items-start justify-between gap-4">
+        <div class="border-l-4 border-rose-500 pl-4">
+          <h2 class="text-xl font-bold text-slate-900">Irregular IR Drill</h2>
+          <p class="text-slate-600 text-sm mt-1">
+            dormir, partir, sortir, venir, ouvrir… Spot which gang the verb belongs to, then pick its form. No -iss- allowed!
+          </p>
+        </div>
+        <button onclick="newIrregularRound()" class="shrink-0 bg-rose-600 hover:bg-rose-700 text-white px-4 py-2 rounded text-sm font-medium transition">🔄 New Round</button>
+      </div>
+
+      <p id="progress-irregular" class="text-xs text-slate-500 bg-slate-50 border border-slate-200 rounded px-3 py-2"></p>
+      <p id="round-done-irregular" class="text-sm font-semibold text-rose-700 bg-rose-50 border border-rose-200 rounded px-3 py-2 hidden"></p>
+
+      <div id="irregular-questions" class="space-y-6"></div>
+    </section>
+
+  </main>
+
+  <footer class="bg-slate-800 text-slate-400 text-center py-4 text-xs mt-auto space-x-2">
+    <span>Pratique de la conjugaison &bull; French Basics Learning Suite</span>
+    <button onclick="resetProgress()" class="underline hover:text-slate-200">Reset progress</button>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
