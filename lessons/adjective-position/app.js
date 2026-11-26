@@ -56,7 +56,7 @@ function checkPosition(i, choice) {
   const feedback = document.getElementById(`position-feedback-${i}`);
   const firstTry = !(i in roundState.answered);
   feedback.classList.remove('hidden');
-  if (choice === q.answer) {
+  if (q.options[choice] === q.answer) {
     if (firstTry) { roundState.answered[i] = true; roundState.correct += 1; }
     feedback.innerText = `✅ Correct. ${q.note}`;
     feedback.className = 'text-sm font-medium text-emerald-600 mt-2';
