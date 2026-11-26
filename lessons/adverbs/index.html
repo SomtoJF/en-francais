@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>French Adverbs Practice</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+  <header class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-8 px-4 shadow-md text-center">
+    <a href="../../index.html" class="text-indigo-200 hover:text-white text-sm font-medium">← All lessons</a>
+    <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">French Adverbs 🗺️</h1>
+    <p class="text-indigo-100 mt-2 max-w-xl mx-auto">Adverbs tell when, where, how, how often, or to what extent something happens.</p>
+  </header>
+  <main class="flex-grow max-w-4xl w-full mx-auto p-4 md:p-8 space-y-8">
+    <nav class="flex flex-wrap bg-white rounded-t-xl shadow-sm border border-slate-200 overflow-hidden">
+      <button onclick="switchTab('categories')" id="tab-categories" class="flex-1 py-3 px-4 border-b-2 border-indigo-600 text-indigo-600 text-sm font-semibold">Adverb categories</button>
+      <button onclick="switchTab('usage')" id="tab-usage" class="flex-1 py-3 px-4 border-b-2 border-transparent text-slate-500 text-sm font-semibold">Usage &amp; negation</button>
+    </nav>
+    <section id="section-categories" class="bg-white p-6 rounded-b-xl shadow-sm border border-t-0 border-slate-200 space-y-4">
+      <div class="border-l-4 border-indigo-500 pl-4">
+        <h2 class="text-xl font-bold text-slate-900">One part of speech, five useful jobs</h2>
+        <p class="text-slate-600 text-sm mt-1">An adverb adds information about an action or description. For example, <em>Elle parle lentement</em> <button onclick="speakFrench(this.dataset.text)" data-text="Elle parle lentement" aria-label="Hear Elle parle lentement">🔊</button> means “She speaks slowly.” <em>Lentement</em> <button onclick="speakFrench(this.dataset.text)" data-text="lentement" aria-label="Hear lentement">🔊</button> tells how she speaks.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 text-sm">
+        <div class="bg-indigo-50 p-4 rounded-lg"><h3 class="font-bold text-indigo-900">Frequency: how often?</h3><p><em>souvent</em> <button onclick="speakFrench('souvent')">🔊</button> (often), <em>toujours</em> <button onclick="speakFrench('toujours')">🔊</button> (always), <em>parfois</em> <button onclick="speakFrench('parfois')">🔊</button> (sometimes), <em>jamais</em> <button onclick="speakFrench('jamais')">🔊</button> (never).<br><em>Je lis souvent.</em> <button onclick="speakFrench('Je lis souvent.')">🔊</button> I often read.</p></div>
+        <div class="bg-purple-50 p-4 rounded-lg"><h3 class="font-bold text-purple-900">Manner: how?</h3><p><em>bien</em> <button onclick="speakFrench('bien')">🔊</button> (well), <em>vite</em> <button onclick="speakFrench('vite')">🔊</button> (quickly), <em>lentement</em> <button onclick="speakFrench('lentement')">🔊</button> (slowly).<br><em>Il conduit prudemment.</em> <button onclick="speakFrench('Il conduit prudemment.')">🔊</button> He drives carefully.</p></div>
+        <div class="bg-emerald-50 p-4 rounded-lg"><h3 class="font-bold text-emerald-900">Place: where?</h3><p><em>ici</em> <button onclick="speakFrench('ici')">🔊</button> (here), <em>dehors</em> <button onclick="speakFrench('dehors')">🔊</button> (outside), <em>partout</em> <button onclick="speakFrench('partout')">🔊</button> (everywhere), <em>nulle part</em> <button onclick="speakFrench('nulle part')">🔊</button> (nowhere).<br><em>Elle travaille ici.</em> <button onclick="speakFrench('Elle travaille ici.')">🔊</button> She works here.</p></div>
+        <div class="bg-amber-50 p-4 rounded-lg"><h3 class="font-bold text-amber-900">Quantity or degree: how much?</h3><p><em>beaucoup</em> <button onclick="speakFrench('beaucoup')">🔊</button> (a lot), <em>peu</em> <button onclick="speakFrench('peu')">🔊</button> (little), <em>très</em> <button onclick="speakFrench('très')">🔊</button> (very), <em>trop</em> <button onclick="speakFrench('trop')">🔊</button> (too).<br><em>Il travaille beaucoup.</em> <button onclick="speakFrench('Il travaille beaucoup.')">🔊</button> He works a lot.</p></div>
+        <div class="bg-rose-50 p-4 rounded-lg"><h3 class="font-bold text-rose-900">Time: when?</h3><p><em>aujourd’hui</em> <button onclick="speakFrench('aujourd’hui')">🔊</button> (today), <em>demain</em> <button onclick="speakFrench('demain')">🔊</button> (tomorrow), <em>déjà</em> <button onclick="speakFrench('déjà')">🔊</button> (already), <em>bientôt</em> <button onclick="speakFrench('bientôt')">🔊</button> (soon).<br><em>Nous partons demain.</em> <button onclick="speakFrench('Nous partons demain.')">🔊</button> We leave tomorrow.</p></div>
+      </div>
+    </section>
+    <section id="section-usage" class="hidden bg-white p-6 rounded-b-xl shadow-sm border border-t-0 border-slate-200 space-y-4">
+      <div class="border-l-4 border-purple-500 pl-4"><h2 class="text-xl font-bold text-slate-900">Where adverbs go</h2><p class="text-slate-600 text-sm mt-1">Placement depends on what the adverb modifies and whether the verb is simple or compound.</p></div>
+      <div class="grid md:grid-cols-2 gap-4 text-sm">
+        <div class="bg-indigo-50 p-4 rounded-lg space-y-2"><h3 class="font-bold text-indigo-900">Simple tenses</h3><p>Many short adverbs follow the conjugated verb:</p><p><em>Elle chante bien</em> <button onclick="speakFrench(this.dataset.text)" data-text="Elle chante bien" aria-label="Hear Elle chante bien">🔊</button> (She sings well)</p><p><em>Je lis souvent</em> <button onclick="speakFrench(this.dataset.text)" data-text="Je lis souvent" aria-label="Hear Je lis souvent">🔊</button> (I often read)</p></div>
+        <div class="bg-purple-50 p-4 rounded-lg space-y-2"><h3 class="font-bold text-purple-900">Compound tenses</h3><p>Many short adverbs fit between the auxiliary and past participle:</p><p><em>J’ai souvent voyagé</em> <button onclick="speakFrench(this.dataset.text)" data-text="J’ai souvent voyagé" aria-label="Hear J’ai souvent voyagé">🔊</button> (I have often travelled)</p><p><em>Elle a déjà fini</em> <button onclick="speakFrench(this.dataset.text)" data-text="Elle a déjà fini" aria-label="Hear Elle a déjà fini">🔊</button> (She has already finished)</p><p>Longer adverbs often follow the participle.</p></div>
+        <div class="bg-amber-50 p-4 rounded-lg space-y-2"><h3 class="font-bold text-amber-900">Quantity</h3><p>Use <em>beaucoup de</em> before a noun:</p><p><em>beaucoup de livres</em> <button onclick="speakFrench(this.dataset.text)" data-text="beaucoup de livres" aria-label="Hear beaucoup de livres">🔊</button></p><p>Use <em>beaucoup</em> after a verb:</p><p><em>Il lit beaucoup</em> <button onclick="speakFrench(this.dataset.text)" data-text="Il lit beaucoup" aria-label="Hear Il lit beaucoup">🔊</button></p><p><em>Très</em> modifies an adjective or adverb: <em>très intéressant</em> <button onclick="speakFrench(this.dataset.text)" data-text="très intéressant" aria-label="Hear très intéressant">🔊</button>, <em>très vite</em> <button onclick="speakFrench(this.dataset.text)" data-text="très vite" aria-label="Hear très vite">🔊</button>.</p></div>
+        <div class="bg-emerald-50 p-4 rounded-lg space-y-2"><h3 class="font-bold text-emerald-900">Time and place</h3><p>These often appear at the beginning or end:</p><p><em>Demain, nous partons</em> <button onclick="speakFrench(this.dataset.text)" data-text="Demain, nous partons" aria-label="Hear Demain, nous partons">🔊</button> (Tomorrow, we leave)</p><p><em>Elle travaille ici</em> <button onclick="speakFrench(this.dataset.text)" data-text="Elle travaille ici" aria-label="Hear Elle travaille ici">🔊</button> (She works here)</p></div>
+      </div>
+      <div class="bg-rose-50 border border-rose-200 p-4 rounded-lg text-sm space-y-2">
+        <h3 class="font-bold text-rose-900">Special pattern: ne … personne</h3>
+        <p><em>Personne</em> <button onclick="speakFrench('personne')">🔊</button> means “nobody” or “no one.” When it is the object, put it after the verb: <strong><em>Je ne vois personne.</em></strong> <button onclick="speakFrench(this.dataset.text)" data-text="Je ne vois personne" aria-label="Hear Je ne vois personne">🔊</button> = “I see no one.” With a compound tense, put it after the past participle: <strong><em>Je n’ai vu personne.</em></strong> <button onclick="speakFrench(this.dataset.text)" data-text="Je n’ai vu personne" aria-label="Hear Je n’ai vu personne">🔊</button> = “I saw no one.”</p>
+        <p>When “nobody” is the subject, it comes first and <em>ne</em> goes before the verb: <strong><em>Personne ne vient.</em></strong> <button onclick="speakFrench(this.dataset.text)" data-text="Personne ne vient" aria-label="Hear Personne ne vient">🔊</button> = “Nobody is coming.” Use <em>ne … jamais</em> <button onclick="speakFrench('ne jamais')">🔊</button> for “never” and <em>ne … nulle part</em> <button onclick="speakFrench('ne nulle part')">🔊</button> for “nowhere.”</p>
+      </div>
+      <div class="border-t border-slate-200 pt-4 space-y-4">
+        <div class="flex items-start justify-between gap-4"><div><h3 class="text-lg font-bold text-slate-900">Translate both ways</h3><p class="text-sm text-slate-600">Choose the translation. Use the speaker buttons whenever you want to hear a French sentence.</p></div><button onclick="newUsageRound()" class="shrink-0 bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded text-sm font-medium">🔄 New Round</button></div>
+        <p id="progress-usage" class="text-xs text-slate-500 bg-slate-50 border border-slate-200 rounded px-3 py-2"></p>
+        <p id="round-done-usage" class="text-sm font-semibold text-purple-700 bg-purple-50 border border-purple-200 rounded px-3 py-2 hidden"></p>
+        <div id="usage-questions" class="space-y-6"></div>
+      </div>
+    </section>
+    <section class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 space-y-6">
+      <div class="flex items-start justify-between gap-4"><div class="border-l-4 border-indigo-500 pl-4"><h2 class="text-xl font-bold text-slate-900">Choose the right adverb</h2><p class="text-slate-600 text-sm mt-1">Identify the meaning, choose a natural position, or translate the sentence. Watch for negation and compound tenses.</p></div><button onclick="newRound()" class="shrink-0 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded text-sm font-medium transition">🔄 New Round</button></div>
+      <p id="progress-quiz" class="text-xs text-slate-500 bg-slate-50 border border-slate-200 rounded px-3 py-2"></p>
+      <p id="round-done-quiz" class="text-sm font-semibold text-indigo-700 bg-indigo-50 border border-indigo-200 rounded px-3 py-2 hidden"></p>
+      <div id="quiz-questions" class="space-y-6"></div>
+    </section>
+  </main>
+  <footer class="bg-slate-800 text-slate-400 text-center py-4 text-xs mt-auto space-x-2"><span>Les adverbes &bull; French Basics Learning Suite</span><button onclick="resetProgress()" class="underline hover:text-slate-200">Reset progress</button></footer>
+  <script src="data.js"></script><script src="app.js"></script>
+</body>
+</html>
