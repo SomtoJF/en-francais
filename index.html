@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>French Basics Learning Suite</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.1.0"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
     body {
@@ -35,7 +36,11 @@
     <!-- Lessons -->
     <section class="space-y-4">
       <h2 class="text-xl font-bold text-slate-900">Lessons</h2>
-      <div id="lesson-grid" class="grid gap-4 md:grid-cols-2"></div>
+      <label for="lesson-search" class="sr-only">Search lessons by title</label>
+      <input id="lesson-search" type="search" placeholder="Search lessons by title..." autocomplete="off"
+        class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200">
+      <p id="no-results" class="hidden rounded-xl border border-slate-200 bg-white p-5 text-sm text-slate-600">No lessons found. Try another title.</p>
+      <div id="lesson-groups" class="space-y-8"></div>
     </section>
 
   </main>
@@ -47,85 +52,143 @@
   <script>
     const LESSONS = [
       {
+        group: 'Pronunciation',
         title: 'The French Alphabet 🔤',
         characters: 'a bé cé',
         href: 'lessons/alphabet/index.html',
         description: 'All 26 letters with their French name spellings, IPA pronunciations, English sound hints, and audio to listen letter by letter.',
       },
       {
+        group: 'Pronunciation',
         title: 'Accent Aigu ↗',
         characters: 'é',
         href: 'lessons/aigu/index.html',
         description: 'The rising accent that only ever appears on "e" and makes the crisp "ay" sound. Includes drills to stop mixing é and è up.',
       },
       {
+        group: 'Pronunciation',
         title: 'Accent Grave ↘',
         characters: 'è à ù',
         href: 'lessons/grave/index.html',
         description: 'The falling accent: "air" sound on è, silent meaning-saver on à and ù (a/à, ou/où, la/là). Includes quizzes for both jobs.',
       },
       {
+        group: 'Pronunciation',
         title: 'Accent Circonflexe 🎩',
         characters: 'ê â ô û î',
         href: 'lessons/circonflexe/index.html',
         description: 'Master the circumflex through word history (the ghost "S"), meaning-saving word pairs like <em>sur/sûr</em>, and mouth mechanics for the ê and ô sounds.',
       },
       {
-        title: 'Conjugaison 🔧',
+        group: 'Verb Conjugation',
+        title: 'Present Tense Conjugation 🔧',
         characters: 'er ir re',
         href: 'lessons/conjugaison/index.html',
         description: 'Present-tense conjugation of the three regular verb families: ER, IR, and RE. Includes common irregular verbs.',
       },
       {
+        group: 'Verb Conjugation',
         title: 'Passé composé ⏱️',
         characters: 'j’ai parlé',
         href: 'lessons/passe-compose/index.html',
         description: 'Build completed past actions with avoir or être, past participles, negation, and agreement.',
       },
       {
+        group: 'Verb Conjugation',
         title: 'Futur simple 🔮',
         characters: 'je parlerai',
         href: 'lessons/futur-simple/index.html',
         description: 'Talk about what will happen with regular endings, irregular stems, and si + présent clauses.',
       },
       {
+        group: 'Verb Conjugation',
         title: 'L’imparfait 🌧️',
         characters: 'je parlais',
         href: 'lessons/imparfait/index.html',
         description: 'Describe habits, background, and ongoing past actions. Contrast them with passé composé.',
       },
       {
+        group: 'Verb Conjugation',
         title: 'Conditionnel présent 💭',
         characters: 'je parlerais',
         href: 'lessons/conditionnel-present/index.html',
         description: 'Practise would, polite requests, hypotheses, and the si + imparfait → conditionnel pattern.',
       },
       {
+        group: 'Grammar',
         title: 'COD & COI 🎯',
         characters: 'qui ? à qui ?',
         href: 'lessons/coi-cod/index.html',
         description: 'Identify direct and indirect objects, choose and place object pronouns, and practise them across tenses, negations, infinitives, and translations.',
       },
+      {
+        group: 'Grammar',
+        title: 'Adjective Position 📍',
+        characters: 'BAGS',
+        href: 'lessons/adjective-position/index.html',
+        description: 'Learn where descriptive adjectives go, how BAGS helps, and how position can change meaning.',
+      },
+      {
+        group: 'Grammar',
+        title: 'Limiting Adjectives 🧭',
+        characters: 'ce, mon, quel…',
+        href: 'lessons/limiting-adjectives/index.html',
+        description: 'Meet demonstrative, exclamative, indefinite, interrogative, numerical, possessive, and relative adjectives.',
+      },
     ];
 
-    function renderLessons() {
-      const grid = document.getElementById('lesson-grid');
-      LESSONS.forEach((lesson) => {
-        const card = document.createElement('a');
-        card.href = lesson.href;
-        card.className = 'block p-5 bg-white border border-slate-200 rounded-xl shadow-sm hover:shadow-md hover:border-indigo-400 transition space-y-2';
-        card.innerHTML = `
-          <div class="flex justify-between items-center">
-            <span class="text-2xl font-bold text-indigo-600">${lesson.title}</span>
-            <span class="text-xs font-mono bg-indigo-100 text-indigo-800 px-2 py-1 rounded">${lesson.characters}</span>
-          </div>
-          <p class="text-sm text-slate-600">${lesson.description}</p>
-          <p class="text-xs font-medium text-indigo-600">Start practicing →</p>`;
-        grid.appendChild(card);
+    const lessonGroups = ['Pronunciation', 'Verb Conjugation', 'Grammar'];
+    const lessonSearch = new Fuse(LESSONS, {
+      keys: ['title'],
+      threshold: 0.4,
+      ignoreLocation: true,
+    });
+
+    function renderLessons(query = '') {
+      const groupsContainer = document.getElementById('lesson-groups');
+      const noResults = document.getElementById('no-results');
+      const matches = query.trim()
+        ? new Set(lessonSearch.search(query.trim()).map(({ item }) => item))
+        : null;
+      groupsContainer.replaceChildren();
+
+      lessonGroups.forEach((groupName) => {
+        const groupLessons = LESSONS.filter((lesson) =>
+          lesson.group === groupName && (!matches || matches.has(lesson))
+        );
+        if (!groupLessons.length) return;
+
+        const section = document.createElement('section');
+        section.className = 'space-y-3';
+        const heading = document.createElement('h3');
+        heading.className = 'text-lg font-bold text-slate-900';
+        heading.textContent = groupName;
+        const grid = document.createElement('div');
+        grid.className = 'grid gap-4 md:grid-cols-2';
+        section.append(heading, grid);
+
+        groupLessons.forEach((lesson) => {
+          const card = document.createElement('a');
+          card.href = lesson.href;
+          card.className = 'block p-5 bg-white border border-slate-200 rounded-xl shadow-sm hover:shadow-md hover:border-indigo-400 transition space-y-2';
+          card.innerHTML = `
+            <div class="flex justify-between items-center">
+              <span class="text-2xl font-bold text-indigo-600">${lesson.title}</span>
+              <span class="text-xs font-mono bg-indigo-100 text-indigo-800 px-2 py-1 rounded">${lesson.characters}</span>
+            </div>
+            <p class="text-sm text-slate-600">${lesson.description}</p>
+            <p class="text-xs font-medium text-indigo-600">Start practicing →</p>`;
+          grid.appendChild(card);
+        });
+        groupsContainer.appendChild(section);
       });
+      noResults.classList.toggle('hidden', groupsContainer.childElementCount > 0);
     }
 
     renderLessons();
+    document.getElementById('lesson-search').addEventListener('input', (event) => {
+      renderLessons(event.target.value);
+    });
   </script>
 </body>
 </html>
